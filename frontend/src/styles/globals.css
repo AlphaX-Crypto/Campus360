@@ -8,14 +8,15 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 15px;
   line-height: var(--line-height-normal);
   color: var(--text-primary);
   background-color: var(--bg-app);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 #root {
@@ -29,14 +30,15 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: var(--font-size-3xl); }
-h2 { font-size: var(--font-size-2xl); }
-h3 { font-size: var(--font-size-xl); }
-h4 { font-size: var(--font-size-lg); }
-h5 { font-size: var(--font-size-base); }
-h6 { font-size: var(--font-size-sm); }
+h1 { font-size: var(--font-size-2xl); }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
+h4 { font-size: var(--font-size-base); }
+h5 { font-size: var(--font-size-sm); }
+h6 { font-size: var(--font-size-xs); }
 
 p {
   color: var(--text-secondary);
@@ -45,13 +47,13 @@ p {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-secondary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
 a:hover {
-  color: var(--color-accent-hover);
+  color: var(--color-secondary-hover);
 }
 
 button {
@@ -66,6 +68,7 @@ input, select, textarea {
   font-family: inherit;
   font-size: var(--font-size-sm);
   color: var(--text-primary);
+  background-color: transparent;
 }
 
 /* Institutional Utilities */
@@ -77,6 +80,22 @@ input, select, textarea {
   color: var(--text-secondary);
 }
 
+.text-success {
+  color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
 .mono-code {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
@@ -84,7 +103,7 @@ input, select, textarea {
   border: 1px solid var(--border-default);
   padding: 2px 6px;
   border-radius: var(--radius-xs);
-  color: var(--color-primary);
+  color: var(--text-primary);
   font-weight: var(--font-weight-medium);
 }
 

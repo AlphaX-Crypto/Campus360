@@ -1,0 +1,35 @@
+.c360-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  background-color: transparent;
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.c360-theme-toggle:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.c360-theme-toggle__icon {
+  transition: transform var(--transition-fast);
+}
+
+.c360-theme-toggle:hover .c360-theme-toggle__icon {
+  transform: rotate(15deg);
+}
+
+.c360-theme-toggle__icon--sun {
+  color: #FBBF24;
+}
+
+.c360-theme-toggle__icon--moon {
+  color: var(--text-secondary);
+}

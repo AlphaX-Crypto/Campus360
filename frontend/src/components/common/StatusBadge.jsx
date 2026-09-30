@@ -1,35 +1,42 @@
 import React from 'react';
 import './StatusBadge.css';
 
-export function StatusBadge({ status = 'PENDING', className = '' }) {
-  const normStatus = status?.toUpperCase() || 'PENDING';
+export function StatusBadge({ status = 'PENDING', label = null, className = '' }) {
+  const normStatus = (status || '').toUpperCase();
 
-  const labelMap = {
-    PENDING: 'Pending',
-    IN_REVIEW: 'In Review',
-    APPROVED: 'Approved',
-    REJECTED: 'Rejected',
-    COMPLETED: 'Completed',
-  };
+  let badgeType = 'pending';
+  let displayLabel = label;
 
-  const styleClass = {
-    PENDING: 'c360-badge--pending',
-    IN_REVIEW: 'c360-badge--review',
-    APPROVED: 'c360-badge--approved',
-    REJECTED: 'c360-badge--rejected',
-    COMPLETED: 'c360-badge--approved',
-  }[normStatus] || 'c360-badge--pending';
+  if (normStatus.includes('ACTION') || normStatus === 'PENDING_ACTION') {
+    badgeType = 'action';
+    displayLabel = displayLabel || 'Pending action';
+  } else if (normStatus.includes('APPROV') || normStatus === 'APPROVED') {
+    badgeType = 'approved';
+    displayLabel = displayLabel || 'Approved';
+  } else if (normStatus.includes('REVIEW') || normStatus === 'IN_REVIEW') {
+    badgeType = 'review';
+    displayLabel = displayLabel || 'In review';
+  } else if (normStatus.includes('COMPLET') || normStatus === 'COMPLETED') {
+    badgeType = 'completed';
+    displayLabel = displayLabel || 'Completed';
+  } else if (normStatus.includes('REJECT') || normStatus === 'REJECTED') {
+    badgeType = 'rejected';
+    displayLabel = displayLabel || 'Rejected';
+  } else {
+    badgeType = 'pending';
+    displayLabel = displayLabel || 'Pending';
+  }
 
   return (
-    <span className={`c360-badge ${styleClass} ${className}`}>
+    <span className={`c360-badge c360-badge--${badgeType} ${className}`}>
       <span className="c360-badge__dot" />
-      {labelMap[normStatus] || status}
+      <span>{displayLabel}</span>
     </span>
   );
 }
 
 export function PriorityBadge({ priority = 'NORMAL', className = '' }) {
-  const normPriority = priority?.toUpperCase() || 'NORMAL';
+  const normPriority = (priority || 'NORMAL').toUpperCase();
 
   const styleClass = {
     LOW: 'c360-priority--low',

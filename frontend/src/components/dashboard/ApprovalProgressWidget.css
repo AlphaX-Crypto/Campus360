@@ -1,0 +1,169 @@
+.c360-approval-widget {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.c360-approval-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.c360-approval-widget__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.c360-approval-widget__view-link {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+}
+
+.c360-approval-widget__view-link:hover {
+  color: var(--color-secondary-hover);
+}
+
+.c360-approval-widget__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.c360-approval-widget__id-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.c360-approval-widget__req-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+/* Workflow Track */
+.c360-workflow-progress {
+  padding: var(--space-2) 0;
+}
+
+.c360-workflow-progress__track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+}
+
+.c360-workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  flex: 1;
+  min-width: 55px;
+}
+
+.c360-workflow-step__circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  transition: all var(--transition-fast);
+}
+
+/* Completed Step */
+.c360-workflow-step__circle--completed {
+  background-color: #10B981;
+  border-color: #10B981;
+  color: #FFFFFF;
+}
+
+/* Current Step */
+.c360-workflow-step__circle--current {
+  background-color: var(--bg-surface);
+  border-color: #2563EB;
+  color: #2563EB;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.c360-workflow-step__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2563EB;
+}
+
+/* Future Step */
+.c360-workflow-step__circle--future {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-default);
+  color: var(--text-muted);
+}
+
+.c360-workflow-step__labels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 6px;
+  gap: 2px;
+}
+
+.c360-workflow-step__title {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.c360-workflow-step__title--current {
+  color: #2563EB;
+  font-weight: var(--font-weight-bold);
+}
+
+.c360-workflow-step__subtitle {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.c360-workflow-connector {
+  flex: 1;
+  height: 2px;
+  background-color: var(--border-default);
+  margin: 13px -6px 0;
+  z-index: 1;
+  transition: background-color var(--transition-fast);
+}
+
+.c360-workflow-connector--active {
+  background-color: #10B981;
+}
+
+/* Note box */
+.c360-approval-widget__note {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+}
+
+.c360-approval-widget__note p {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}

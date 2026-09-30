@@ -2,55 +2,80 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
-  line-height: 1;
+  line-height: 1.2;
   border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .c360-badge__dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
-/* Status variants */
+/* Action required / Pending action */
+.c360-badge--action {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border-color: var(--color-warning-border);
+}
+.c360-badge--action .c360-badge__dot {
+  background-color: var(--color-warning);
+}
+
+/* Pending */
 .c360-badge--pending {
-  background-color: var(--status-pending-bg);
-  color: var(--status-pending-text);
-  border-color: var(--status-pending-border);
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border-color: var(--color-warning-border);
 }
 .c360-badge--pending .c360-badge__dot {
-  background-color: var(--status-pending-text);
+  background-color: var(--color-warning);
 }
 
+/* In Review */
 .c360-badge--review {
-  background-color: var(--status-review-bg);
-  color: var(--status-review-text);
-  border-color: var(--status-review-border);
+  background-color: var(--color-info-bg);
+  color: var(--color-info-text);
+  border-color: var(--color-info-border);
 }
 .c360-badge--review .c360-badge__dot {
-  background-color: var(--status-review-text);
+  background-color: var(--color-info);
 }
 
+/* Approved */
 .c360-badge--approved {
-  background-color: var(--status-approved-bg);
-  color: var(--status-approved-text);
-  border-color: var(--status-approved-border);
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border-color: var(--color-success-border);
 }
 .c360-badge--approved .c360-badge__dot {
-  background-color: var(--status-approved-text);
+  background-color: var(--color-success);
 }
 
+/* Completed */
+.c360-badge--completed {
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
+  border-color: var(--border-default);
+}
+.c360-badge--completed .c360-badge__dot {
+  background-color: var(--text-muted);
+}
+
+/* Rejected */
 .c360-badge--rejected {
-  background-color: var(--status-rejected-bg);
-  color: var(--status-rejected-text);
-  border-color: var(--status-rejected-border);
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  border-color: var(--color-error-border);
 }
 .c360-badge--rejected .c360-badge__dot {
-  background-color: var(--status-rejected-text);
+  background-color: var(--color-error);
 }
 
 /* Priority Badges */
@@ -65,18 +90,18 @@
 }
 
 .c360-priority--low {
-  background-color: var(--priority-low-bg);
-  color: var(--priority-low-text);
+  background-color: var(--bg-subtle);
+  color: var(--text-secondary);
 }
 .c360-priority--normal {
-  background-color: var(--color-primary-light);
-  color: var(--color-accent);
+  background-color: var(--color-info-bg);
+  color: var(--color-info-text);
 }
 .c360-priority--high {
-  background-color: var(--priority-medium-bg);
-  color: var(--priority-medium-text);
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
 }
 .c360-priority--urgent {
-  background-color: var(--priority-high-bg);
-  color: var(--priority-high-text);
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
 }

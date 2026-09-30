@@ -1,0 +1,85 @@
+.c360-metric-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.c360-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.c360-metric-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.c360-metric-card__title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.c360-metric-card__icon-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c360-metric-card__icon-badge--active {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.c360-metric-card__icon-badge--pending {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.c360-metric-card__icon-badge--completed {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.c360-metric-card__icon-badge--resolution {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.c360-metric-card__value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.c360-metric-card__subtext {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.c360-metric-card--active .c360-metric-card__subtext {
+  color: var(--color-info);
+}
+
+.c360-metric-card--pending .c360-metric-card__subtext {
+  color: var(--color-warning);
+}
+
+.c360-metric-card--completed .c360-metric-card__subtext {
+  color: var(--color-success);
+}

@@ -1,0 +1,132 @@
+.c360-launchpad-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.c360-launchpad-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.c360-launchpad-card__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.c360-launchpad-card__subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+.c360-launchpad-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.c360-launchpad-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-subtle);
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.c360-launchpad-item:hover {
+  background-color: var(--color-primary-light);
+  border-color: rgba(37, 99, 235, 0.2);
+  transform: translateX(2px);
+}
+
+.c360-launchpad-item__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.c360-launchpad-item__icon--calendar {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.c360-launchpad-item__icon--shield {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.c360-launchpad-item__icon--briefcase {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.c360-launchpad-item__icon--receipt {
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #6366F1;
+}
+
+.c360-launchpad-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.c360-launchpad-item__title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.c360-launchpad-item__subtitle {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c360-launchpad-item__chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.c360-launchpad-item:hover .c360-launchpad-item__chevron {
+  color: var(--color-secondary);
+  transform: translateX(2px);
+}
+
+.c360-launchpad-card__footer {
+  padding-top: var(--space-2);
+}
+
+.c360-launchpad-card__browse-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+}
+
+.c360-launchpad-card__browse-link:hover {
+  color: var(--color-secondary-hover);
+}

@@ -2,7 +2,7 @@
 
 ## 1. Project Name
 **Campus360 — From Fragmented to Connected**  
-A unified institutional campus request, approval, and tracking platform designed to eliminate fragmented paper forms, disparate emails, and uncoordinated spreadsheets.
+A unified institutional campus request, approval, and tracking platform giving every campus request ONE secure, connected, and trackable path from submission to resolution.
 
 ---
 
@@ -14,7 +14,7 @@ A unified institutional campus request, approval, and tracking platform designed
 
 ## 3. Current Git Branch
 - **Branch**: `shiva/frontend`
-- **Rule**: All frontend changes remain isolated on this branch. Do not switch branches, merge into `main`, or alter non-frontend directories (`/backend`, `/database`, `/intelligence-engine`, `/analytics`).
+- **Rule**: All frontend implementation remains strictly inside `/frontend`. Do not switch branches, merge into `main`, or alter non-frontend directories (`/backend`, `/database`, `/intelligence-engine`, `/analytics`).
 
 ---
 
@@ -23,9 +23,9 @@ A unified institutional campus request, approval, and tracking platform designed
 - **Build Tool**: Vite 8 (`vite`, `@vitejs/plugin-react`)
 - **Language**: JavaScript (ES Modules)
 - **Routing**: React Router DOM v7 (`react-router-dom`)
-- **Styling**: Vanilla CSS with reusable Institutional Design Tokens (`src/styles/variables.css`, `src/styles/globals.css`)
+- **Theme & Styling**: Vanilla CSS Design Tokens (`src/styles/variables.css`, `src/styles/globals.css`) with ThemeContext and localStorage persistence (`c360_theme`)
 - **Icons**: Lucide React (`lucide-react`)
-- **State & Services**: Custom React Hooks (`useAuth`) + Decoupled Service Layer (`requestService`, `authService`, `apiClient`)
+- **State & Services**: Custom Hooks (`useTheme`, `useAuth`) + Decoupled Service Layer (`requestService`, `authService`, `apiClient`)
 
 ---
 
@@ -35,22 +35,36 @@ frontend/
 ├── public/
 │   └── vite.svg
 ├── src/
-│   ├── assets/               # Static graphics, SVGs, and brand assets
+│   ├── assets/                       # Static graphics and campus image assets
 │   ├── components/
-│   │   ├── common/           # Universal UI components
+│   │   ├── common/                   # Universal UI components
 │   │   │   ├── Button.jsx & Button.css
 │   │   │   ├── Card.jsx & Card.css
-│   │   │   ├── Header.jsx & Header.css
-│   │   │   ├── Sidebar.jsx & Sidebar.css
 │   │   │   ├── StatusBadge.jsx & StatusBadge.css
 │   │   │   └── RoutePlaceholder.jsx & RoutePlaceholder.css
+│   │   ├── dashboard/                # Reusable Dashboard components
+│   │   │   ├── DashboardHero.jsx & DashboardHero.css
+│   │   │   ├── MetricCard.jsx & MetricCard.css
+│   │   │   ├── AttentionCard.jsx & AttentionCard.css
+│   │   │   ├── RecentRequestsTable.jsx & RecentRequestsTable.css
+│   │   │   ├── ApprovalProgressWidget.jsx & ApprovalProgressWidget.css
+│   │   │   └── QuickRequestLaunchpad.jsx & QuickRequestLaunchpad.css
+│   │   ├── layout/                   # Application shell & navigation
+│   │   │   ├── AppShell.jsx & AppShell.css
+│   │   │   ├── Sidebar.jsx & Sidebar.css
+│   │   │   └── TopBar.jsx & TopBar.css
+│   │   └── theme/
+│   │       ├── ThemeToggle.jsx & ThemeToggle.css
+│   ├── context/
+│   │   └── ThemeContext.jsx          # Theme state provider (Light/Dark)
 │   ├── data/
-│   │   └── mockData.js       # Pre-configured mock requests and institutional user profiles
+│   │   └── mockData.js               # Mock data aligned with reference screenshot
 │   ├── hooks/
-│   │   └── useAuth.js        # Authentication and active role state hook
+│   │   ├── useAuth.js                # Auth & user profile hook
+│   │   └── useTheme.js               # Theme context hook
 │   ├── layouts/
 │   │   ├── AuthLayout.jsx & AuthLayout.css
-│   │   └── DashboardLayout.jsx & DashboardLayout.css
+│   │   └── DashboardLayout.jsx
 │   ├── pages/
 │   │   ├── auth/
 │   │   │   ├── LoginPage.jsx & LoginPage.css
@@ -58,7 +72,9 @@ frontend/
 │   │   │   ├── StudentDashboard.jsx & StudentDashboard.css
 │   │   │   ├── NewRequestPage.jsx
 │   │   │   ├── RequestListPage.jsx
-│   │   │   └── RequestDetailPage.jsx
+│   │   │   ├── RequestDetailPage.jsx
+│   │   │   ├── RecordsPage.jsx
+│   │   │   └── AuxiliaryPages.jsx   # Documents, Notifications, Help
 │   │   ├── faculty/
 │   │   │   └── FacultyDashboard.jsx
 │   │   ├── hod/
@@ -67,100 +83,92 @@ frontend/
 │   │   │   └── AdminDashboard.jsx
 │   │   └── NotFoundPage.jsx
 │   ├── services/
-│   │   ├── api.js            # Base HTTP client with JWT interceptor support
-│   │   ├── authService.js    # Authentication service abstraction
-│   │   └── requestService.js # Request CRUD & approval workflow service
+│   │   ├── api.js                    # Base HTTP client with JWT interceptor support
+│   │   ├── authService.js            # Authentication service abstraction
+│   │   └── requestService.js         # Request CRUD & workflow service
 │   ├── styles/
-│   │   ├── variables.css     # Institutional SaaS design tokens
-│   │   └── globals.css       # Global resets, typography hierarchy, utilities
+│   │   ├── variables.css             # Light & Dark theme tokens
+│   │   └── globals.css               # Typography hierarchy & resets
 │   ├── utils/
-│   │   ├── constants.js      # Roles, stages, categories, and nav definitions
-│   │   └── formatters.js     # Date, relative time, and status label formatters
-│   ├── App.jsx               # Central route configuration
-│   └── main.jsx              # React root entry point
-├── index.html                # HTML entry point with Google Fonts (Inter) & meta tags
+│   │   ├── constants.js              # Roles, stages, categories & nav definitions
+│   │   └── formatters.js             # Date and status label formatters
+│   ├── App.jsx                       # Main React router
+│   └── main.jsx                      # App root mount
+├── index.html
 ├── package.json
 ├── vite.config.js
 ├── README.md
-└── FRONTEND_CONTEXT.md       # Continuity document for AI agents & team members
+└── FRONTEND_CONTEXT.md               # Continuity guide
 ```
 
 ---
 
 ## 6. Implemented Routes
 
-| Route | Role / Scope | Component | Description / Status |
+| Route | View Component | Status | Description |
 |---|---|---|---|
-| `/` | Universal | `Navigate to /login` | Default redirect to login portal |
-| `/login` | Public / Auth | `LoginPage` | Institutional login with quick one-click demo role selector |
-| `/student/dashboard` | Student | `StudentDashboard` | Overview metrics, quick actions, recent submissions preview |
-| `/student/requests/new` | Student | `NewRequestPage` | Submission entry point for leave, hackathons, NOC, certificates |
-| `/student/requests` | Student | `RequestListPage` | Filterable list and tracking table of all student requests |
-| `/student/requests/:id` | Student | `RequestDetailPage` | Multi-stage timeline tracking for Universal IDs (e.g., `C360-2026-0001`) |
-| `/faculty/dashboard` | Faculty | `FacultyDashboard` | Pending verification queue, attendance check, and endorsement |
-| `/hod/dashboard` | HOD | `HodDashboard` | Department approval queue and event permission clearance |
-| `/admin/dashboard` | Admin | `AdminDashboard` | Campus administration, digital signatures, certificate issuance |
-| `*` | Universal | `NotFoundPage` | 404 handler with return-to-portal navigation |
+| `/` | `Navigate to /login` | Operational | Default entry redirect |
+| `/login` | `LoginPage` | Operational | Authentication portal with one-click demo role switches |
+| `/student/dashboard` | `StudentDashboard` | **Phase 2B Complete** | Full operational Student Dashboard matching approved primary reference |
+| `/student/requests` | `RequestListPage` | Operational | Filterable request history |
+| `/student/requests/new` | `NewRequestPage` | Operational | Request submission entry point |
+| `/student/requests/:id` | `RequestDetailPage` | Operational | Universal Request ID timeline tracking |
+| `/student/records` | `RecordsPage` | Operational | Archived official certificates, NOCs & transcripts |
+| `/student/documents` | `DocumentsPage` | Operational | Institutional form templates & guidelines |
+| `/student/notifications` | `NotificationsPage` | Operational | Request status change alerts |
+| `/student/help` | `HelpPage` | Operational | Routing & support desk |
+| `/faculty/dashboard` | `FacultyDashboard` | Operational | Faculty verification queue placeholder |
+| `/hod/dashboard` | `HodDashboard` | Operational | HOD clearance queue placeholder |
+| `/admin/dashboard` | `AdminDashboard` | Operational | Registrar & clearance queue placeholder |
+| `*` | `NotFoundPage` | Operational | 404 handler |
 
 ---
 
-## 7. Completed Work (Phase 1 Foundation)
-- Scaffolded standard Vite + React application in `/frontend`.
-- Established clean institutional SaaS design system using CSS variables:
-  - Deep institutional blue & slate surfaces (`#1e3a8a`, `#0f172a`, `#f8fafc`, `#ffffff`).
-  - Semantic status badges: Pending (Amber), In Review (Indigo), Approved (Emerald), Rejected (Rose).
-  - Clear typography scale and crisp elevation shadows.
-- Built reusable core components (`Header`, `Sidebar`, `Button`, `Card`, `StatusBadge`, `PriorityBadge`, `RoutePlaceholder`).
-- Implemented full routing tree across all 4 institutional roles (Student, Faculty, HOD, Admin) + Dynamic parameter route `/student/requests/:id`.
-- Created decoupled service layer (`api.js`, `authService.js`, `requestService.js`) with mock fallbacks aligned to future backend contracts.
-- Integrated one-click role switching for effortless hackathon demonstration and testing.
+## 7. Completed Work (Phase 2B)
+1. **Design System & Theme Tokens**:
+   - Implemented exact Light (`#F7F9FC` bg, `#FFFFFF` surface, `#2347A6` primary, `#2563EB` secondary, `#E2E8F0` border) and Dark (`#0B1120` bg, `#151E2E` surface, `#638BFF` primary, `#293548` border) design tokens.
+   - Built `ThemeContext` + `ThemeToggle` with seamless switching and `localStorage` persistence.
+2. **Application Shell (`AppShell`, `Sidebar`, `TopBar`)**:
+   - Institutional dark sidebar with Workspace (`Dashboard`, `New Request`, `My Requests [3]`, `My Records`), Resources (`Documents`, `Notifications [1]`), and bottom Student Profile (`Shiva Kumar • CSE 3rd Year`).
+   - Top bar with academic term badge (`Academic Year 2025–26 • Spring`), search field with `⌘ K` keyboard shortcut, theme switcher, and notification badge.
+3. **Student Dashboard Components**:
+   - **DashboardHero**: Greeting (`Good morning, Shiva`), campus badge (`Garden City University`), and `+ New Request` CTA with graceful gradient fallback.
+   - **MetricCard (Row of 4)**: Active requests (3), Pending approval (2), Completed (12), and Average resolution (24h).
+   - **AttentionCard**: Action required banner for `C360-2026-0001` with `View Details` and `Upload Document` actions.
+   - **RecentRequestsTable**: Operational table with status badges (`Pending action`, `Approved`, `In review`, `Completed`), filter pills, formatted Universal IDs, and stage/next-step actions.
+   - **WorkflowProgress & ApprovalProgressWidget**: Dynamic multi-stage connector (Submitted &rarr; Faculty &rarr; HOD &rarr; Admin) supporting custom stages array.
+   - **QuickRequestLaunchpad**: Quick start cards for Leave, Certificates, Internship/NOC, and Reimbursements.
+4. **Preserved Compatibility**: All Phase 1 placeholder routes and service layers remain fully functional.
 
 ---
 
 ## 8. Current Work
-- Completed Phase 1 (Frontend Foundation).
-- Standing by for Phase 2 instructions (Login and Student Dashboard implementation).
+- Phase 2B complete.
+- Standing by for Phase 3 instruction.
 
 ---
 
 ## 9. Pending Work
-1. **Phase 2**: Full Login Authentication Flow & Interactive Student Dashboard with real-time statistics.
-2. **Phase 3**: Request Submission Form (Multi-category schema validation & attachment handling).
-3. **Phase 4**: Universal Request ID Tracking Timeline (`/student/requests/:id`) with interactive audit logs.
-4. **Phase 5**: Role Dashboards (Faculty Advisor approval modal, HOD batch clearance, Admin document issuance).
-5. **Phase 6**: Backend API Integration (Switch `VITE_USE_REAL_BACKEND=true` in `.env`).
+1. **Phase 3**: New Request Submission Multi-Category Form (`/student/requests/new`) with file attachment validation and dynamic routing preview.
+2. **Phase 4**: Interactive Universal Request Tracking Timeline (`/student/requests/:id`) with activity logs and document download.
+3. **Phase 5**: Role Dashboards (Faculty Advisor approval modal, HOD batch endorsement, Admin clearance).
+4. **Phase 6**: Backend REST API integration (`/src/services/api.js`).
 
 ---
 
 ## 10. Important Architectural & Design Decisions
-1. **Zero Global State Bloat**: State is cleanly scoped via `useAuth` hook and localized data services, keeping it fast and easy to maintain for a hackathon.
-2. **Decoupled API Abstraction**: UI components never call `fetch()` directly; all data operations go through `src/services/*`. Connecting real REST APIs will require zero changes to UI JSX.
-3. **Universal Request ID Format**: Data models strictly adhere to the format `C360-YYYY-XXXX` (e.g., `C360-2026-0001`).
-4. **Institutional SaaS Aesthetic**: Minimalist, clean, trustworthy institutional palette without distracting excessive animations or heavy glassmorphism.
+1. **Modular Components**: Dashboard split into isolated reusable components (`DashboardHero`, `MetricCard`, `AttentionCard`, `RecentRequestsTable`, `ApprovalProgressWidget`, `QuickRequestLaunchpad`) rather than a monolithic view.
+2. **Dynamic WorkflowProgress**: `WorkflowProgress` is category-agnostic and accepts any stage array configuration.
+3. **Zero Hard-coded Colors in Components**: All components consume CSS variable tokens, ensuring instant Light & Dark theme adaptation.
+4. **Universal Request ID Compliance**: Universal IDs strictly follow `C360-YYYY-XXXX`.
 
 ---
 
 ## 11. Backend Integration Assumptions
-- **Base Endpoint**: `http://localhost:5000/api` (configurable via `VITE_API_BASE_URL`).
-- **Auth Header**: Bearer token via `Authorization: Bearer <token>`.
-- **Payload Schema Example**:
-```json
-{
-  "requestId": "C360-2026-0001",
-  "studentId": "STU001",
-  "studentName": "Aarav Sharma",
-  "department": "Computer Science & Engineering",
-  "category": "Hackathon / Event Permission",
-  "title": "Smart India Hackathon Grand Finale Attendance",
-  "description": "Request permission to attend hackathon...",
-  "status": "PENDING",
-  "currentStage": "FACULTY",
-  "priority": "HIGH",
-  "createdAt": "2026-09-30T08:00:00"
-}
-```
+- Decoupled in `/src/services`. No UI JSX contains direct `fetch()` calls.
+- Environment variables: `VITE_API_BASE_URL` and `VITE_USE_REAL_BACKEND`.
 
 ---
 
-## 12. Known Issues / Limitations
-- **None**: Initial build compiles cleanly with zero errors and zero warnings.
+## 12. Known Limitations
+- Backend API is mocked in local state for hackathon frontend development until backend integration phase.

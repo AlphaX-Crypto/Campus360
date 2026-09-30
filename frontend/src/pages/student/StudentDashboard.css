@@ -1,85 +1,51 @@
-.c360-preview-metrics {
+.c360-student-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+/* Metric Cards Grid */
+.c360-dashboard-metrics {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-4);
 }
 
-.c360-metric-card .c360-card__body {
-  padding: var(--space-5);
+/* Main Split Grid */
+.c360-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(320px, 1.15fr);
+  gap: var(--space-6);
+  align-items: flex-start;
 }
 
-.c360-metric-card__header {
+.c360-dashboard-grid__left {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-2);
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
 }
 
-.c360-metric-card__label {
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-secondary);
+.c360-dashboard-grid__right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-width: 0;
 }
 
-.c360-metric-card__value {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  line-height: 1;
-  margin-bottom: var(--space-1);
+@media (max-width: 1200px) {
+  .c360-dashboard-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .c360-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-.c360-metric-card__hint {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.c360-link-action {
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-accent);
-}
-
-.c360-table-wrapper {
-  overflow-x: auto;
-}
-
-.c360-preview-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--font-size-xs);
-}
-
-.c360-preview-table th {
-  text-align: left;
-  padding: 8px 12px;
-  background-color: var(--bg-subtle);
-  color: var(--text-muted);
-  font-weight: var(--font-weight-semibold);
-  border-bottom: 1px solid var(--border-default);
-}
-
-.c360-preview-table td {
-  padding: 12px;
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-}
-
-.c360-stage-tag {
-  background-color: var(--bg-subtle);
-  padding: 2px 6px;
-  border-radius: var(--radius-xs);
-  font-weight: var(--font-weight-medium);
-  color: var(--text-primary);
-}
-
-.c360-table-link {
-  color: var(--color-accent);
-  font-weight: var(--font-weight-semibold);
-}
-
-@media (max-width: 768px) {
-  .c360-preview-metrics {
+@media (max-width: 640px) {
+  .c360-dashboard-metrics {
     grid-template-columns: 1fr;
   }
 }

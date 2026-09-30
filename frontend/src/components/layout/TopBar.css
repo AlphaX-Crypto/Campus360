@@ -1,0 +1,188 @@
+.c360-topbar {
+  height: var(--header-height);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  gap: var(--space-4);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.c360-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.c360-topbar__menu-btn {
+  display: none;
+  padding: var(--space-2);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+}
+
+.c360-topbar__menu-btn:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.c360-topbar__academic-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 12px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.c360-topbar__calendar-icon {
+  color: var(--text-muted);
+}
+
+.c360-topbar__center {
+  flex: 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.c360-topbar__search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.c360-topbar__search-box:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  background-color: var(--bg-surface);
+}
+
+.c360-topbar__search-icon {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.c360-topbar__search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.c360-topbar__search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.c360-topbar__search-kbd {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  padding: 2px 6px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  color: var(--text-muted);
+  font-weight: var(--font-weight-medium);
+  flex-shrink: 0;
+}
+
+.c360-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.c360-topbar__icon-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  transition: all var(--transition-fast);
+}
+
+.c360-topbar__icon-btn:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.c360-topbar__notif-indicator {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  background-color: #EF4444;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-surface);
+}
+
+.c360-topbar__avatar-btn {
+  cursor: pointer;
+}
+
+.c360-topbar__avatar {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+  color: #FFFFFF;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+}
+
+.c360-topbar__online-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #10B981;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-surface);
+}
+
+@media (max-width: 900px) {
+  .c360-topbar__academic-pill {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .c360-topbar {
+    padding: 0 var(--space-4);
+  }
+  .c360-topbar__menu-btn {
+    display: flex;
+  }
+  .c360-topbar__center {
+    display: none;
+  }
+}

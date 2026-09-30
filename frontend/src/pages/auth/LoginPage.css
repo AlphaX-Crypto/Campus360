@@ -1,0 +1,200 @@
+.c360-login-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+}
+
+.c360-login-card__brand {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.c360-login-card__logo-badge {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-lg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.05em;
+}
+
+.c360-login-card__title {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.c360-login-card__subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.c360-login-card__notice {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--border-default);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-5);
+  text-align: center;
+}
+
+.c360-login-card__notice p {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.c360-login-card__quick-roles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.c360-role-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.c360-role-btn:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.c360-role-btn__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.c360-role-btn__icon--student {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.c360-role-btn__icon--faculty {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.c360-role-btn__icon--hod {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+.c360-role-btn__icon--admin {
+  background-color: #d1fae5;
+  color: #047857;
+}
+
+.c360-role-btn__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.c360-role-btn__title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.c360-role-btn__desc {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.c360-role-btn__arrow {
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.c360-role-btn:hover .c360-role-btn__arrow {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+.c360-login-card__divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: var(--space-5) 0;
+}
+
+.c360-login-card__divider::before,
+.c360-login-card__divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.c360-login-card__divider span {
+  padding: 0 var(--space-3);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.c360-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.c360-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.c360-form-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.c360-form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  transition: border-color var(--transition-fast);
+}
+
+.c360-form-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.c360-login-submit-btn {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.c360-login-card__footer {
+  margin-top: var(--space-6);
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+}

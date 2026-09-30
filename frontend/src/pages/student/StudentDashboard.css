@@ -1,0 +1,85 @@
+.c360-preview-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.c360-metric-card .c360-card__body {
+  padding: var(--space-5);
+}
+
+.c360-metric-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.c360-metric-card__label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.c360-metric-card__value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.c360-metric-card__hint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.c360-link-action {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+}
+
+.c360-table-wrapper {
+  overflow-x: auto;
+}
+
+.c360-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-xs);
+}
+
+.c360-preview-table th {
+  text-align: left;
+  padding: 8px 12px;
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  font-weight: var(--font-weight-semibold);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.c360-preview-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.c360-stage-tag {
+  background-color: var(--bg-subtle);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.c360-table-link {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 768px) {
+  .c360-preview-metrics {
+    grid-template-columns: 1fr;
+  }
+}

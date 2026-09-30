@@ -1,0 +1,82 @@
+.c360-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  border: 1px solid transparent;
+}
+
+.c360-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* Status variants */
+.c360-badge--pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+  border-color: var(--status-pending-border);
+}
+.c360-badge--pending .c360-badge__dot {
+  background-color: var(--status-pending-text);
+}
+
+.c360-badge--review {
+  background-color: var(--status-review-bg);
+  color: var(--status-review-text);
+  border-color: var(--status-review-border);
+}
+.c360-badge--review .c360-badge__dot {
+  background-color: var(--status-review-text);
+}
+
+.c360-badge--approved {
+  background-color: var(--status-approved-bg);
+  color: var(--status-approved-text);
+  border-color: var(--status-approved-border);
+}
+.c360-badge--approved .c360-badge__dot {
+  background-color: var(--status-approved-text);
+}
+
+.c360-badge--rejected {
+  background-color: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+  border-color: var(--status-rejected-border);
+}
+.c360-badge--rejected .c360-badge__dot {
+  background-color: var(--status-rejected-text);
+}
+
+/* Priority Badges */
+.c360-priority-badge {
+  display: inline-flex;
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.c360-priority--low {
+  background-color: var(--priority-low-bg);
+  color: var(--priority-low-text);
+}
+.c360-priority--normal {
+  background-color: var(--color-primary-light);
+  color: var(--color-accent);
+}
+.c360-priority--high {
+  background-color: var(--priority-medium-bg);
+  color: var(--priority-medium-text);
+}
+.c360-priority--urgent {
+  background-color: var(--priority-high-bg);
+  color: var(--priority-high-text);
+}
